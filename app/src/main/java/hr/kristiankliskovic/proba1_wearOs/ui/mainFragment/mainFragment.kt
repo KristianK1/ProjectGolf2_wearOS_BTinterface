@@ -69,7 +69,6 @@ class mainFragment : Fragment() {
 
 
 
-        saveMac("AC:67:B2:35:A0:F2");
         Bluetooth_uuid = getMac()
 
         return binding.root
