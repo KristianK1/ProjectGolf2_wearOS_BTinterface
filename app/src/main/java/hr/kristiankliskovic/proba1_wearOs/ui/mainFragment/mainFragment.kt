@@ -16,9 +16,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import hr.kristiankliskovic.proba1_wearOs.MainActivity
 import hr.kristiankliskovic.proba1_wearOs.databinding.MainscreenBinding
 import hr.kristiankliskovic.proba1_wearOs.utils.preferenceManager.getMac
 import hr.kristiankliskovic.proba1_wearOs.utils.preferenceManager.saveMac
@@ -42,6 +44,8 @@ class mainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = MainscreenBinding.inflate(layoutInflater)
+        requestPermission(arrayOf(Manifest.permission.BLUETOOTH_CONNECT),
+            MainActivity.BLUETOOTH_PERMISSION_CODE)
 
         binding.topLeftButton.setOnClickListener {
             openSettings()
@@ -66,12 +70,20 @@ class mainFragment : Fragment() {
             builder.show()
         }
 
-
-
-
         Bluetooth_uuid = getMac()
 
         return binding.root
+    }
+
+
+    private fun requestPermission(permissions: Array<String>, requestCode: Int) {
+        Log.i("perms", "here i am")
+        if (ContextCompat.checkSelfPermission(MainActivity.activity,
+                permissions[0]) == PackageManager.PERMISSION_DENIED
+        ) {
+            // Requesting the permission
+            ActivityCompat.requestPermissions(MainActivity.activity, permissions, requestCode)
+        }
     }
 
     fun BTsend(send: String) {
@@ -83,6 +95,7 @@ class mainFragment : Fragment() {
             val enableBluetoothIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
             Log.i("btFind", "" + Bluetooth_uuid);
             val myDevice = bluetoothAdapter.getRemoteDevice(Bluetooth_uuid)
+            Log.i("btFind", "here4");
 
             if (ActivityCompat.checkSelfPermission(
                     requireContext(),
