@@ -1,6 +1,7 @@
 package hr.kristiankliskovic.proba1_wearOs.ui.settingsFragment
 
 import android.os.Bundle
+import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import hr.kristiankliskovic.proba1_wearOs.databinding.SettingsfragmentBinding
+import hr.kristiankliskovic.proba1_wearOs.utils.preferenceManager.getMac
 import hr.kristiankliskovic.proba1_wearOs.utils.preferenceManager.saveMac
 
 class settingsFragment : Fragment() {
@@ -25,6 +27,9 @@ class settingsFragment : Fragment() {
         binding = SettingsfragmentBinding.inflate(layoutInflater)
         binding.saveMACbt.setOnClickListener {
             saveMAC()
+        }
+        if(!getMac().isNullOrEmpty()) {
+            binding.macEt.text = Editable.Factory.getInstance().newEditable(getMac())
         }
         return binding.root
     }
