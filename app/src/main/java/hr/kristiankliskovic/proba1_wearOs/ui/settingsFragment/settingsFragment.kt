@@ -24,6 +24,7 @@ class settingsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
+
         binding = SettingsfragmentBinding.inflate(layoutInflater)
         binding.saveMACbt.setOnClickListener {
             saveMAC()
