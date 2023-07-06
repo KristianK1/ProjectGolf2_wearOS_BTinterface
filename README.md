@@ -7,13 +7,17 @@ It is used to send commands to a device specified by a MAC adress which user nee
 
 Main screen:
 offers the user some commands, button to navigate to the settings screen.
+
 ![Main screen](screenshots/PG2_wearOS_main.png)
 
 After pressing the "OTHER" button an addtional list of commands appears.
+
 ![Main screen - additional](screenshots/PG2_wearOS_pickCommand.png)
+
 ![Main screen - additional2](screenshots/PG2_wearOS_pickCommand2.png)
 
 
 Settings screen:
 Allows the user to enter a MAC adress
+
 ![Settings screen](screenshots/PG2_wearOS_settings.png)
