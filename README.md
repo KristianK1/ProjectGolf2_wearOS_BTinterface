@@ -7,7 +7,7 @@ It is used to send commands to a device specified by a MAC adress which user nee
 
 Main screen:
 offers the user some commands, button to navigate to the settings screen.
-![Main screen](screenshots/PG2_main.jpg)
+![Main screen](screenshots/PG2_wearOS_main.jpg)
 
 After pressing the "OTHER" button an addtional list of commands appears.
 ![Main screen](screenshots/PG2_wearOS_pickCommand.jpg)
